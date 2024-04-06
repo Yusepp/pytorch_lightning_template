@@ -1,0 +1,6 @@
+# Weights & Biases (WandB) Configuration
+wandb:
+  save_dir: "<path_to_save_wandb_logs>"  # Directory to save WandB logs
+  offline: False                         # Set to True to run WandB in offline mode
+  id: 0                                  # Run ID for resuming runs, set a specific ID to resume
+  project: "<your_project_name>"         # Name of the WandB project

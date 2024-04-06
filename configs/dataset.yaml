@@ -1,0 +1,8 @@
+# Path configuration for datasets
+data_dir: "<path to your data directory>"  # Specify the directory containing the data
+
+# DataLoader configurations
+batch_size: 32  # Batch size for training; ensure divisibility by the number of GPUs for distributed setups
+train_val_test_split: [0.8, 0.1, 0.1]  # Split ratios for training, validation, and test datasets
+num_workers: 2  # Number of subprocesses to use for data loading
+pin_memory: True  # If True, DataLoader will copy Tensors into CUDA pinned memory before returning them

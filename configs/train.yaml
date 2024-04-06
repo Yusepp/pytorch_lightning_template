@@ -1,0 +1,38 @@
+# Seed for reproducibility
+seed: 42
+
+# Compilation setting
+compile: True
+
+# Optimizer configuration
+optimizer:
+  _target: torch.optim.Adam  # Specifies the optimizer class
+  lr: 0.001                   # Learning rate
+  weight_decay: 0.0           # Weight decay (L2 penalty)
+
+# Scheduler for adjusting learning rate
+scheduler:
+  _target_: torch.optim.lr_scheduler.ReduceLROnPlateau
+  mode: min       # Objective metric mode: 'min' for minimizing, 'max' for maximizing
+  factor: 0.1     # Factor by which the learning rate will be reduced
+  patience: 10    # Number of epochs with no improvement after which learning rate will be reduced
+
+# Model checkpoint settings
+model_checkpoint:
+  checkpoints_dir: "<path>/checkpoints"   # Directory to save checkpoints
+  filename: "epoch_{epoch:03d}"                      # Checkpoint file name pattern
+  monitor: "val/acc"                                 # Metric to monitor for checkpointing
+  mode: "max"                                        # Monitoring mode
+  save_last: True                                    # Flag to save the latest model checkpoint
+
+# Early stopping configuration
+early_stopping:
+  monitor: "val/acc"  # Metric to monitor for early stopping
+  patience: 10        # Patience for early stopping
+  mode: "max"         # Mode for metric comparison
+
+# Trainer settings
+trainer:
+  epochs: 100        # Number of training epochs
+  gpus: [0]          # List of GPUs to use
+  precision: 32      # Numerical precision (16 or 32)
